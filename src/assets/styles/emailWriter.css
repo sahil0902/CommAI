@@ -1,0 +1,11 @@
+#heading {
+    border-radius: 25px;
+    margin-top: 1rem;
+}
+#main{
+    border-radius: 25px;
+}
+
+.options{
+    border: 1px solid pink;
+}
