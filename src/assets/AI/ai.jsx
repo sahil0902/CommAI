@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-
+import 'regenerator-runtime/runtime';
 const api = import.meta.env.VITE_API_KEY;
 const genAI = new GoogleGenerativeAI(api);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
