@@ -5,7 +5,7 @@ const theme = extendTheme({
   components: {
     Button: {
       baseStyle: {
-        // Remove color: "inherit" to avoid inheriting from parent elements
+        
       },
       variants: {
         solid: (props) => ({

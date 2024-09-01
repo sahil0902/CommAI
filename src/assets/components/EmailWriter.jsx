@@ -22,6 +22,7 @@ import {
   useClipboard,
   useColorMode,
 } from "@chakra-ui/react";
+import { Button as MUIButton } from '@mui/material';
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
@@ -178,7 +179,7 @@ export default function EmailWriter() {
     }
   }, [listening, transcript, toast, toastShown]);
   return (
-    <Box id="main" minH="100vh" bg={bg} color={color}>
+    <Box id="main" minH="100vh" bg={"#F6F5F5"} color={color}>
       <Flex direction="column" h="100vh">
         <Flex
           id="heading"
@@ -192,7 +193,7 @@ export default function EmailWriter() {
           <Heading size="lg" fontSize={{ base: "xl", md: "2xl" }}>
             AI Communication Assistant
           </Heading>
-          <IconButton
+          {/* <IconButton
           id="Buttons"
             icon={colorMode === "light" ? <Moon /> : <Sun />}
             onClick={toggleColorMode}
@@ -200,7 +201,7 @@ export default function EmailWriter() {
            color={colorMode === "dark" ? "white" : "black"}
             bg={buttonColorScheme}
             _hover={{ bg: "whiteAlpha.200" }}
-          />
+          /> */}
         </Flex>
         <Flex
           flex={1}
@@ -234,10 +235,11 @@ export default function EmailWriter() {
             />
             <Flex flexWrap="wrap" justifyContent="space-between">
               <Popover>
-                <PopoverTrigger>
+                <PopoverTrigger >
+                  
                   <Button
                   id="Buttons"
-                 color={colorMode === "dark" ? "white" : "black"}
+                //  color={colorMode === "dark" ? "white" : "black"}
                     size="md"
                     mb={{ base: 2, md: 0 }}
                     rightIcon={<ChevronDown />}
@@ -253,7 +255,7 @@ export default function EmailWriter() {
                         as={Button}
                         rightIcon={<ChevronDown />}
                         w="100%"
-                        colorScheme={buttonColorScheme}
+                        // colorScheme={buttonColorScheme}
                         {...glassStyle}
                       >
                         Predefined Actions
@@ -266,28 +268,28 @@ export default function EmailWriter() {
                               "Summarize this email or message"
                             )
                           }
-                          _hover={{ bg: "rgba(255, 255, 255, 0.2)" }}
+                             _hover={{ bg: "rgba(200, 200, 200, 0.5)"  }}
                         >
                           Summarize
                         </MenuItem>
                         <MenuItem
                           marginBottom="10px"
                           onClick={() => handleActionSelect("Reply this email")}
-                          _hover={{ bg: "rgba(255, 255, 255, 0.2)" }}
+                             _hover={{ bg: "rgba(200, 200, 200, 0.5)"  }}
                         >
                           Reply
                         </MenuItem>
                         <MenuItem
                           marginBottom="10px"
                           onClick={() => handleActionSelect("Write this email")}
-                          _hover={{ bg: "rgba(255, 255, 255, 0.2)" }}
+                             _hover={{ bg: "rgba(200, 200, 200, 0.5)"  }}
                         >
                           Write an Email
                         </MenuItem>
                         <MenuItem
                           marginBottom="10px"
                           onClick={() => handleActionSelect("Write a message")}
-                          _hover={{ bg: "rgba(255, 255, 255, 0.2)" }}
+                             _hover={{ bg: "rgba(200, 200, 200, 0.5)"  }}
                         >
                           Write a Message
                         </MenuItem>
@@ -315,7 +317,7 @@ export default function EmailWriter() {
               </Popover>  
 
               <IconButton
-              id="buttons"
+              id="Buttons"
              color={colorMode === "dark" ? "white" : "black"}
                 icon={listening ? <Mic /> : <MicOff />}
                 onClick={
@@ -331,9 +333,9 @@ export default function EmailWriter() {
               id="Buttons"
                 onClick={handleSubmit}
                 leftIcon={<Send />}
-                color={buttonColorScheme}
+               colorScheme='gray'
                 size="md"
-                bg={buttonColorScheme}
+                // bg={buttonColorScheme}
                 isLoading={loading}
                 loadingText="Processing..."
                 mb={{ base: 2, md: 0 }}
@@ -392,6 +394,7 @@ export default function EmailWriter() {
                             {...glassStyle}
                           />
                           <IconButton
+                          id="Buttons"
                             icon={<Edit />}
                             onClick={modifyFurther}
                             size="sm"
