@@ -1,3 +1,9 @@
+:root {
+    --button-bg-light: transparent; /* Light green for light mode */
+    --button-bg-dark: transparent; /* Light orange for dark mode */
+    --button-text-light: black; /* Text color for light mode */
+    --button-text-dark: white; /* Text color for dark mode */
+}
 #heading {
     border-radius: 25px;
     margin-top: 1rem;

@@ -15,5 +15,13 @@ export default defineConfig({
   },
   esbuild: {
     logOverride: { 'this-is-undefined-in-esm': 'silent' }
-  }
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        main: './src/main.jsx',
+        polyfills: './src/polyfills.js',
+      },
+    },
+  },
 });

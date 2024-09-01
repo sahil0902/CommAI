@@ -76,7 +76,8 @@ export default function EmailWriter() {
   const textColor = useColorModeValue("gray.800", "gray.200");
   const accentColor = useColorModeValue("teal.500", "cyan.300");
   const boxBg = useColorModeValue("white", "gray.700");
-  const buttonColorScheme = useColorModeValue("teal", "orange");
+  const buttonColorScheme = useColorModeValue("blue.500", "purple.500");
+  const buttonTextColor = useColorModeValue("black", "white");
 
   const handleEmailChange = (e) => setEmailContent(e.target.value);
   const handleActionChange = (e) => setAction(e.target.value);
@@ -192,10 +193,12 @@ export default function EmailWriter() {
             AI Communication Assistant
           </Heading>
           <IconButton
+          id="Buttons"
             icon={colorMode === "light" ? <Moon /> : <Sun />}
             onClick={toggleColorMode}
             variant="ghost"
-            color={color}
+           color={colorMode === "dark" ? "white" : "black"}
+            bg={buttonColorScheme}
             _hover={{ bg: "whiteAlpha.200" }}
           />
         </Flex>
@@ -233,7 +236,8 @@ export default function EmailWriter() {
               <Popover>
                 <PopoverTrigger>
                   <Button
-                    colorScheme={buttonColorScheme}
+                  id="Buttons"
+                 color={colorMode === "dark" ? "white" : "black"}
                     size="md"
                     mb={{ base: 2, md: 0 }}
                     rightIcon={<ChevronDown />}
@@ -290,27 +294,29 @@ export default function EmailWriter() {
                       </MenuList>
                     </Menu>
                     <Textarea
-                      value={action}
-                      onChange={handleActionChange}
-                      placeholder="Or describe what you want to do..."
-                      size="sm"
-                      resize="vertical"
-                      bg={{ base: "gray.100", md: boxBg }}
-                      borderColor={{ base: "gray.300", md: accentColor }}
-                      _focus={{
-                        borderColor: accentColor,
-                        boxShadow: `0 0 0 1px ${accentColor}`,
-                      }}
-                      h="100px"
-                      mt={4}
-                      required
-                      {...glassStyle}
-                    />
+  value={action}
+  onChange={handleActionChange}
+  placeholder="Or describe what you want to do..."
+  size="sm"
+  resize="vertical"
+  bg={boxBg} // Use boxBg for consistent background color
+  borderColor={accentColor} // Use accentColor for consistent border color
+  _focus={{
+    borderColor: accentColor,
+    boxShadow: `0 0 0 1px ${accentColor}`,
+  }}
+  h="100px"
+  mt={4}
+  required
+  {...glassStyle}
+/>
                   </PopoverBody>
                 </PopoverContent>
-              </Popover>
+              </Popover>  
 
               <IconButton
+              id="buttons"
+             color={colorMode === "dark" ? "white" : "black"}
                 icon={listening ? <Mic /> : <MicOff />}
                 onClick={
                   listening
@@ -322,10 +328,12 @@ export default function EmailWriter() {
       <button onClick={resetTranscript}>Reset</button> */}
 
               <Button
+              id="Buttons"
                 onClick={handleSubmit}
                 leftIcon={<Send />}
-                colorScheme={buttonColorScheme}
+                color={buttonColorScheme}
                 size="md"
+                bg={buttonColorScheme}
                 isLoading={loading}
                 loadingText="Processing..."
                 mb={{ base: 2, md: 0 }}
@@ -334,9 +342,11 @@ export default function EmailWriter() {
                 Submit
               </Button>
               <IconButton
+            id="Buttons"
                 icon={<RefreshCw />}
                 onClick={resetForm}
-                colorScheme={buttonColorScheme}
+               color={colorMode === "dark" ? "white" : "black"}
+                bg={buttonColorScheme}
                 variant="ghost"
                 size="md"
                 {...glassStyle}
@@ -372,10 +382,11 @@ export default function EmailWriter() {
                         </Badge>
                         <Flex>
                           <IconButton
+                          id="Buttons"
                             icon={<Copy />}
                             onClick={copyToClipboard}
                             size="sm"
-                            colorScheme="white"
+                           color={colorMode === "dark" ? "white" : "black"}
                             variant="ghost"
                             mr={2}
                             {...glassStyle}
@@ -384,6 +395,7 @@ export default function EmailWriter() {
                             icon={<Edit />}
                             onClick={modifyFurther}
                             size="sm"
+                           color={colorMode === "dark" ? "white" : "black"}
                             bg={buttonColorScheme}
                             variant="ghost"
                             {...glassStyle}
