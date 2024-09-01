@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base:'/',
+  base: '/', // Adjust this if your app is deployed in a subdirectory
   plugins: [react()],
   resolve: {
     alias: {
@@ -25,5 +25,10 @@ export default defineConfig({
         polyfills: './src/polyfills.js',
       },
     },
+  },
+  server: {
+    
+    // to ensure it serves the index.html for all routes in development
+    historyApiFallback: true,
   },
 });
